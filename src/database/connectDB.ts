@@ -1,25 +1,12 @@
 import { MongoClient } from "https://deno.land/x/mongo@v0.30.0/mod.ts";
 
+  // Connecting to a Mongo Database
   const client = new MongoClient();
+  
+  const dbString = "DB_String"
 
-  // Connecting to a Mongo Atlas Database
-  await client.connect({
-    db: 'deno_auth',
-    tls: true,
-    servers: [
-      {
-        host: "dbhost",
-        port: 27017,
-      },
-   ],
-    credential: {
-      username: "dbName",
-      password: "dbPassword",
-      db: "admin",
-      mechanism: "SCRAM-SHA-1",
-    },
-  });
-
+  await client.connect(dbString)
+  
  console.log("Database connected!");
  const db = client.database("deno_auth");
 
